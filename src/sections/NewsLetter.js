@@ -24,7 +24,7 @@ const NewsLetter = () => {
 
 const styles = {
     newsLetter_section: {
-        width: '85%',
+        width: '80%',
         margin: '0 auto',
     },
     newsLetter_section_grid: {
@@ -112,7 +112,7 @@ const styles = {
 
     subscribe__btn: {
     position:'absolute',
-    right:'6px',
+    right:'10px',
     appearance: 'none',
     display: 'inline-block',
     textDecoration: 'none',

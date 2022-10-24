@@ -54,7 +54,13 @@ const ServiceSection = () => {
   return (
     <div >
       <Flex sx={styles.serviceSectionContainer}>
-      <Container sx={{position:'relative',flex:'0 1 530px'}}>
+        <Container sx={{
+          position: 'relative',
+          flex: '1 1 360px',
+        '@media screen  and (max-width:880px)': {
+          flex: 'unset',
+        }
+        }}>
         <Box sx={styles.serviceSectionContainer_img_wrapper}>
           <Image src={serviceThumb} alt='service_thumbnail' />
           <Button
@@ -69,8 +75,8 @@ const ServiceSection = () => {
             <Image src={shapePattern} alt='shapePattern' />
           </Box>
         </Container>
-        <Container sx={styles.section_key_features_container}>
-          <SectionHeader {...serviceData.heading} isAlign='left' marginBottom='3rem' sxStyles={{ ...styles.title}} />
+        <Container sx={styles.section_service_section_content_container}>
+          <SectionHeader {...serviceData.heading} isAlign='left' marginBottom='3rem' sxStyles={{ ...styles.section_service_section_content_title}} />
         <Grid sx={{flex:1,gap: '4rem'}}>
         {
             serviceData.features.map((item) => (
@@ -98,13 +104,15 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    mb:'12rem'
+    mb: '12rem',
+    '@media screen and (min-width:880px) and (max-width:990px)': {
+      gap:'1.5rem'
+    }
   },
   serviceSectionContainer_img_wrapper: {
     position: 'relative',
     width: '100%',
     display:'flex',
-    // isolation:'isolate',
     'img': {
       width: 'auto',
       borderRadius:'20px'
@@ -143,13 +151,16 @@ const styles = {
     width: '80%',
     bottom:'-10%',
     left: '-25%',
-    zIndex:-1
+    zIndex:-1,
+    '@media screen and (max-width:880px)': {
+     display:'none'
+    }
   },
-  section_key_features_container: {
+  section_service_section_content_container: {
     width: '50%',
-    flex:'0 1 700px'
+    flex:'1 1 320px'
   },
-  title: {
+  section_service_section_content_title: {
       fontSize: ["24px", null, "28px",null,"30px", "36px", "42px", null, "48px"],
       color: "heading_secondary",
       lineHeight: [1.3, null, null, null, 1.2],

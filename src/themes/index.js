@@ -68,6 +68,7 @@ export default {
       variant: 'buttons.defaultBtn',
       color: 'white',
       bg: 'primary',
+      fontSize:'18px',
       '&:hover': {
         boxShadow: 'rgba(233, 76, 84, 0.57) 0px 9px 20px -5px',
       }
@@ -107,11 +108,11 @@ export default {
       variant: 'buttons.defaultBtn',
       backgroundColor: 'transparent',
       cursor: 'pointer',
-      color: 'white',
-      svg: {
-        fontSize: [4, 6],
-        mr: 2,
-      }
+      color: 'secondary',
+      fontSize: '1.3rem',
+      fontWeight: '700',
+      textAlign: 'center',
+      padding:'0'
     }
   },
   text: {
@@ -166,6 +167,7 @@ export default {
     },
     feature: {
       pb: '3rem',
+      mb:'6rem'
     },
     news: {
       pb: [8, null, 9, null, null, 10, null, '170px'],
@@ -215,7 +217,8 @@ export default {
     root: {
     fontFamily: '"DM Sans", sans-serif',
     lineHeight: 1.8,
-    fontWeight: 'normal',
+      fontWeight: 'normal',
+
     }
   }
 
