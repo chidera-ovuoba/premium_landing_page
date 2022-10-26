@@ -12,6 +12,7 @@ import Package from '../src/sections/Package';
 import TeamSection from '../src/sections/TeamSection';
 import TestimonialCard from '../src/sections/TestimonialCard';
 import NewsLetter from '../src/sections/NewsLetter';
+import Blog from '../src/sections/Blog';
   
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Package />
         <TeamSection />
         <TestimonialCard />
+        <Blog/>
         <NewsLetter/>
       </Layout>
     </ThemeProvider>

@@ -30,7 +30,7 @@ const CoreFeature = () => {
           <SectionHeader slogan='CORE FEATURES' title='Smart Jackpots that you may love this anytime & anywhere' isAlign='left' marginBottom='3rem' sxStyles={{ ...styles.section_core_features_content_title}} />
         <Grid sx={{gap: '2rem'}}>
             <Text variant="heroSecondary">Get your tests delivered at let home collect sample from the victory of the managements that supplies best design system guidelines ever.</Text>
-            <Button sx={{variant:'buttons.primary',width:'10rem'}}>Get Started</Button>
+            <Button sx={{variant:'buttons.primary',width:'12rem'}}>Get Started</Button>
         </Grid>
       </Container>
       </Flex>

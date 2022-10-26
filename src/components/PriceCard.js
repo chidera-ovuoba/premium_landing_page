@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { RiCheckboxCircleFill } from 'react-icons/ri';
 import { MdCancel } from 'react-icons/md';
+import { keyframes } from '@emotion/react';
 import { Box, Button, Container, Flex, Grid, Heading, Text } from 'theme-ui';
 
 const PriceCard = () => {
@@ -10,6 +11,7 @@ const PriceCard = () => {
               <Heading sx={styles.price_card_container_heading2}>Free Plan</Heading>
               <Text sx={styles.price_card_container_paragraph}>For Small teams or office</Text>
           </Box>
+          <Box sx={styles.price_card_container_content}>
           <Grid sx={styles.price_card_container_pricing_features}>
               <Flex sx={styles.price_card_container_pricing_features_feature}>
                   <RiCheckboxCircleFill />
@@ -50,12 +52,31 @@ const PriceCard = () => {
               display: 'grid',
               placeItems: 'center',
               width:'100%'
-          }}>Or Start 14 Days trail</Button>
+              }}>Or Start 14 Days trail</Button>
+              </Box>
           <Box sx={styles.price_card_container_tag}>Suggested</Box>
       </Container>
   )
 }
 
+const animationCard = keyframes`
+0%{
+ opacity:0;
+ transform:translateY(50px);
+}
+100%{
+opacity:1;
+ transform:translateY(0);
+}
+`
+const animationCardHeader = keyframes`
+0%{
+ opacity:0;
+}
+100%{
+opacity:1;
+}
+`
 const styles = {
     price_card_container: {
         border: "2px solid rgba(38, 78, 118, 0.1)",
@@ -69,9 +90,18 @@ const styles = {
             boxShadow: 'rgb(38 78 118 / 10%) 0px 4px 25px'
         }
     },
-    price_card_container_header: {
-        mb:'2rem'
+    price_card_container_content: {
+        '& > *': {
+          animation:`${animationCard} 2s ease `
+        }  
     },
+    price_card_container_header: {
+        mb: '2rem',
+        '&': {
+            animation:`${animationCardHeader} 2s ease `
+        }
+    },
+
     price_card_container_heading2: {
     lineHeight: '1.25',
     fontWeight: '700',
