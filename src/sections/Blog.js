@@ -42,7 +42,6 @@ const styles = {
         maxWidth: '400px',
         minWidth: '290px',
         boxShadow: 'rgb(38 78 118 / 12%) 0px 4px 10px',
-        // height: '36em',
         position: 'relative',
         transition:'all 0.5s',
         ':hover': {
