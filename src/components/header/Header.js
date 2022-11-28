@@ -62,7 +62,7 @@ const styles = {
     animation: `${animationSticky} 0.4s ease`,
     zIndex:100,
     '&.sticky': {
-    position: 'fixed',
+      position: 'fixed',
     backgroundColor:'#FFFFFF',
     color: '#000000',
     boxShadow:'0 1px 2px rgb(0 0 0 / 6%)',

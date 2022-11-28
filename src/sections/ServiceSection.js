@@ -89,7 +89,7 @@ const ServiceSection = () => {
       <ModalVideo
         channel="youtube"
         isOpen={videoOpen}
-        videoId="iGBERMGMIvc"
+        videoId="YaGMit-KC9o"
         onClose={() => setVideoOpen(false)}
       />
     </div>
@@ -130,9 +130,9 @@ const styles = {
     placeItems: 'center',
     background:'rgba(255,255,255,0.5)',
     'svg': {
-      fontSize: '500%',
+      fontSize: '300%',
       '@media screen and (max-width:400px)': {
-        fontSize:'300%'
+        fontSize:'200%'
       }
     },
     '&::before': {

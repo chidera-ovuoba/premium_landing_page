@@ -3,32 +3,39 @@ import { RiCheckboxCircleFill } from 'react-icons/ri';
 import { MdCancel } from 'react-icons/md';
 import { keyframes } from '@emotion/react';
 import { Box, Button, Container, Flex, Grid, Heading, Text } from 'theme-ui';
+import { useEffect, useRef } from 'react';
 
-const PriceCard = () => {
-  return (
-      <Container sx={styles.price_card_container}>
-          <Box sx={styles.price_card_container_header}>
-              <Heading sx={styles.price_card_container_heading2}>Free Plan</Heading>
-              <Text sx={styles.price_card_container_paragraph}>For Small teams or office</Text>
+const PriceCard = ({ listdata, period,id,title,subtitle,pricing,buttonText,isAvailable,isSuggested }) => {
+    const cardContent = useRef(null);
+    const cardHeader = useRef(null);
+
+    useEffect(() => {
+        if (period === 'Annual Plan') {
+            cardContent.current.classList.remove('price_card_container_content_monthly')
+            cardHeader.current.classList.remove('price_card_container_header_monthly')
+            cardContent.current.classList.add('price_card_container_content_annually')
+            cardHeader.current.classList.add('price_card_container_header_annually')
+        }
+        if (period === 'Monthly Plan') {
+            cardContent.current.classList.remove('price_card_container_content_annually')
+            cardHeader.current.classList.remove('price_card_container_header_annually')
+            cardContent.current.classList.add('price_card_container_content_monthly')
+            cardHeader.current.classList.add('price_card_container_header_monthly')
+        }
+    }, [period])
+    return (
+        <Container sx={styles.price_card_wrapper} >
+        <Container sx={styles.price_card_container} >
+        <Box ref={cardHeader} sx={{mb: '2rem'}}>
+        <Heading sx={styles.price_card_container_heading2}>{title}</Heading>
+        <Text sx={styles.price_card_container_paragraph}>{subtitle}</Text>
           </Box>
-          <Box sx={styles.price_card_container_content}>
+          <Box ref={cardContent}>
           <Grid sx={styles.price_card_container_pricing_features}>
-              <Flex sx={styles.price_card_container_pricing_features_feature}>
-                  <RiCheckboxCircleFill />
-                  <Text as='p'>1,000's of Templates</Text>
-              </Flex>
-              <Flex sx={styles.price_card_container_pricing_features_feature}>
-                  <RiCheckboxCircleFill />
-                  <Text as='p'>1,000's of Templates</Text>
-              </Flex>
-              <Flex sx={styles.price_card_container_pricing_features_feature}>
-                  <RiCheckboxCircleFill />
-                  <Text as='p'>1,000's of Templates</Text>
-              </Flex>
-              <Flex sx={styles.price_card_container_pricing_features_feature}>
-                  <RiCheckboxCircleFill />
-                  <Text as='p'>1,000's of Templates</Text>
-              </Flex>
+                  {listdata.map(({ name, icon }) => <Flex sx={styles.price_card_container_pricing_features_feature} key={name}>
+                  {icon}
+                  <Text as='p'>{name}</Text>
+              </Flex>)}
           </Grid>
           <Container sx={{
               textAlign: "center",
@@ -36,72 +43,57 @@ const PriceCard = () => {
               color: 'text',
               mb:'30px'
           }}>
-            <span sx={{
-             fontWeight:'700'  
-              }}>$0</span>
-              /Monthly
-          </Container>
-          <Box sx={{
-              display: 'grid',
-              placeItems: 'center',
-              mb:'1rem'
-          }}>
-              <Button variant='primary'>Start free trail</Button>
-          </Box>
-          <Button variant='textButton' sx={{
-              display: 'grid',
-              placeItems: 'center',
-              width:'100%'
-              }}>Or Start 14 Days trail</Button>
-              </Box>
-          <Box sx={styles.price_card_container_tag}>Suggested</Box>
-      </Container>
-  )
-}
-
-const animationCard = keyframes`
-0%{
- opacity:0;
- transform:translateY(50px);
-}
-100%{
-opacity:1;
- transform:translateY(0);
-}
-`
-const animationCardHeader = keyframes`
-0%{
- opacity:0;
-}
-100%{
-opacity:1;
-}
-`
-const styles = {
-    price_card_container: {
+          <span sx={{
+              fontWeight:'700'  
+            }}>{pricing.split('/')[0]}</span>
+            /{pricing.split('/')[1]}
+            </Container>
+            <Box sx={{
+                display: 'grid',
+                placeItems: 'center',
+                mb:'1rem'
+            }}>
+            <Button variant='primary'>{buttonText}</Button>
+            </Box>
+            {isAvailable && <Button variant='textButton' sx={{
+                display: 'grid',
+                placeItems: 'center',
+                width: '100%'
+            }}>Or Start 14 Days trail</Button>}
+            </Box>
+            {isSuggested &&<Box sx={styles.price_card_container_tag}>Suggested</Box>}
+            </Container>
+            </Container>
+            )
+        }
+        
+        const styles = {
+        
+            price_card_wrapper: {
+            height: '37em',
+            display: 'grid',
+            placeItems: 'center',
+            maxWidth: '400px',
+            minWidth: '300px',
+            whiteSpace:'nowrap',
+            mx:'10px'
+            },
+            
+        price_card_container: {
         border: "2px solid rgba(38, 78, 118, 0.1)",
         borderRadius: '20px',
         p: '4rem 2rem',
         maxWidth: '400px',
-        minWidth: '290px',
-        height: '36em',
+        minWidth: '300px',
+        whiteSpace:'nowrap',
+        height: '95%',
+        // mx:'10px',
         position: 'relative',
         ':hover': {
             boxShadow: 'rgb(38 78 118 / 10%) 0px 4px 25px'
         }
     },
-    price_card_container_content: {
-        '& > *': {
-          animation:`${animationCard} 2s ease `
-        }  
-    },
-    price_card_container_header: {
-        mb: '2rem',
-        '&': {
-            animation:`${animationCardHeader} 2s ease `
-        }
-    },
-
+    
     price_card_container_heading2: {
     lineHeight: '1.25',
     fontWeight: '700',
@@ -150,6 +142,7 @@ const styles = {
         paddingLeft: '12px',
         paddingRight: '12px',
         height: '32px',
+        
     }
 }
 export default PriceCard

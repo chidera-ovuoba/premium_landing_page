@@ -20,7 +20,7 @@ const Banner = () => {
           <Button variant="primary">Explore</Button>
         </Box>
         <Box sx={styles.banner_imageBox}>
-          <Image src={BannerImg} alt="Banner"/>
+          <Image src={BannerImg} alt="Banner" priority/>
         </Box>
       </Grid>
     </Container>
@@ -38,7 +38,7 @@ const styles = {
     left: 0,
     height: '60%',
     width: '70%',
-       zIndex: -1,
+       zIndex: 1,
     '@media screen and (max-width:900px)': {
       bottom:'80px',
     },
@@ -65,7 +65,7 @@ const styles = {
     right: 0,
     height: '60%',
     width: '40%',
-    zIndex: -1,
+    zIndex: 1,
        '@media screen and (max-width:900px)': {
     bottom:'80px',
     },
@@ -99,13 +99,15 @@ const styles = {
     textAlign: 'center',
     marginBottom: '40px',
     width: '57%',
+    zIndex:4,
      '@media screen and (max-width:530px)': {
     width: '90%',
     }
     
   },
   banner_imageBox: {
-    width:'100%',
+    width: '100%',
+    zIndex:2,
     height: '100%',
     '& > img':{
     width:'100%',

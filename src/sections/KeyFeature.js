@@ -57,7 +57,7 @@ const KeyFeature = () => {
 
 const styles = {
   grid_section_features: {
-    placeItems:'center',
+    placeContent:'center',
     gap: '4rem',
     gridTemplateColumns:'repeat(2,minmax(250px,100%))',
     '@media screen and (min-width:1600px)': {

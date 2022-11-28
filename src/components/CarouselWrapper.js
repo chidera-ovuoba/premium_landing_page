@@ -1,74 +1,105 @@
 /** @jsxImportSource theme-ui */
 import { Box, Container, Flex } from "theme-ui";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import Carousel from "react-multi-carousel";
+import { useEffect, useRef, useState } from "react";
+// import Carousel from "react-multi-carousel";
 
-const ButtonGroup = ({next,previous}) => (
-    <Flex sx={{ width: "100%" }}>
+const ButtonGroup = ({removeButton }) => {
+ 
+  return <Flex sx={{
+    width: "100%", justifyContent: 'center', alignItems: 'center', height: "100%", mt: "60px",
+   '@media screen and (min-width:1350px)': {
+      display: removeButton ? 'none':'flex'
+    },
+    '@media screen and (min-width:2100px)': {
+       display:'none'
+    }
+  }} >
       <Container>
         <Box className="button__group" sx={styles.buttonGroup}>
-          <button onClick={previous} aria-label="Previous">
+          <button  aria-label="Previous">
             <IoIosArrowRoundBack />
           </button>
-          <button onClick={next} aria-label="Next">
+          <button  aria-label="Next">
             <IoIosArrowRoundForward />
           </button>
         </Box>
       </Container>
     </Flex>
-)
+}
 
-// const responsive = {
-//   desktop: {
-//     breakpoint: { max: 2000, min: 1619 },
-//     items: 3,
-//     slidesToSlide: 4,
-//   },
-//   laptop: {
-//     breakpoint: { max: 1619, min: 1024 },
-//     items: 3,
-//     slidesToSlide: 3,
-//   },
-//   tablet: {
-//     breakpoint: { max: 1024, min: 640 },
-//     items: 2,
-//     slidesToSlide: 2,
-//   },
-//   mobile: {
-//     breakpoint: { max: 639, min: 0 },
-//     items: 1,
-//     slidesToSlide: 1,
-//   },
-// };
+const CarouselWrapper = ({ children,removeButton }) => {
 
-// const carouselParams = {
-//   additionalTransfrom: 0,
-//   arrows: false,
-//   autoPlaySpeed: 3000,
-//   centerMode: false,
-//   className: "",
-//   containerClass: "carousel-container",
-//   customButtonGroup: <ButtonGroup />,
-//   dotListClass: "",
-//   draggable: true,
-//   focusOnSelect: false,
-//   infinite: true,
-//   itemClass: "",
-//   keyBoardControl: true,
-//   minimumTouchDrag: 80,
-//   renderButtonGroupOutside: true,
-//   renderDotsOutside: false,
-//   responsive: responsive,
-//   showDots: false,
-//   sliderClass: "",
-//   slidesToSlide: 1,
-// };
+  const containerRef = useRef(null);
+   const buttonGroupRef = useRef(null);
+  const [startScroll, setStartScroll] = useState(false);
+  const [scrollLeft, setScrollLeft] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
-const CarouselWrapper = ({children}) => {
+  
+  useEffect(() => {
+    const container = containerRef.current;
+    buttonGroupRef.current.children[1].children[0].children[0].children[1].addEventListener('mousedown', () => {
+      container.scrollLeft += 0.15 * Number(container.firstChild.clientWidth)
+      !startScroll && setStartScroll(true)
+      setScrollLeft(false);
+    })
+      buttonGroupRef.current.children[1].children[0].children[0].children[0].addEventListener('mousedown', () => {
+        container.scrollLeft -= 40
+        !startScroll && setStartScroll(true)
+        setScrollLeft(true)
+      })
+  }, [])
+  
+
+  // let thresholdQuery= window.innerWidth < 420 ? [0.6,1]:[1]
+    useEffect(() => {
+    const container = containerRef.current;
+      container.scrollLeft -= container.scrollLeft - 11;
+      window.addEventListener('resize',()=>setWindowWidth(window.innerWidth))
+    }, [])
+  useEffect(() => {
+  const container = containerRef.current
+  const galleryItems = containerRef.current.querySelectorAll('.testimonial')
+  const blogItems = containerRef.current.querySelectorAll('.blog')
+  var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting !== true) {
+      console.log('Element has just become invisible in screen',entries[0].target);
+      if (entries[0].target === container.firstChild) {
+        // console.log('Element has just become invisible in screen');
+        container.removeChild(entries[0].target);
+        container.appendChild(entries[0].target);
+        container.scrollLeft -= container.scrollLeft - 11;
+        }
+    }
+    }, { threshold: [0],root:container });
+  
+  var observerLeft = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting === true && scrollLeft) {
+        // console.log('Element has just become visible in screen');
+        if (container.scrollLeft <= 0 || 10 && entries[0].target === container.firstChild && scrollLeft) {
+          // console.log('Element has just ');
+         entries[0].target.insertAdjacentElement("beforebegin", entries[0].target.nextSibling.nextSibling.nextSibling);
+        container.scrollLeft += entries[0].target.clientWidth + 10;
+        } 
+      }
+  }, { threshold: windowWidth < 420 ? [0.6,1]:[1],root:container});
+  
+  startScroll && galleryItems.forEach(item=>observer.observe(item))
+  startScroll && galleryItems.forEach(item=>observerLeft.observe(item))
+  startScroll && blogItems.forEach(item=>observer.observe(item))
+  startScroll && blogItems.forEach(item=>observerLeft.observe(item))
+  
+
+    
+  },[startScroll,scrollLeft])
   return (
-    <Carousel {...carouselParams}>
+    <Box ref={buttonGroupRef} >
+    <Box sx={styles.carouselWrapper} ref={containerRef} className='testimonial-container-card'>
     {children}
-    </Carousel>
+    </Box>
+      <ButtonGroup removeButton={removeButton} />
+      </Box>
   )
 }
 
@@ -77,22 +108,46 @@ const styles = {
   buttonGroup: {
     display: "flex",
     justifyContent: "center",
-    mb: -4,
+    height:'fit-content',
     button: {
-      bg: "transparent",
-      border: "0px solid",
+      bg: "primary",
+      border: "0px solid red",
       fontSize: 40,
       cursor: "pointer",
-      px: "2px",
+      p: "8px 10px",
+      mx:'10px',
+      borderRadius:'8px',
       color: "#BBC7D7",
       transition: "all 0.25s",
       "&:hover": {
-        color: "text",
+        // color: "text",
+        bg:"rgba(0,0,0,0.8)"
       },
       "&:focus": {
         outline: 0,
+        bg:"rgba(0,0,0,0.8)"
       },
     },
   },
+  carouselWrapper: {
+    width: '85%',
+    height: '100%',
+    display: 'flex',
+    overflowX: 'scroll',
+    margin: '0 auto',
+    '@media screen and (min-width:1700px)': {
+      width:'80%'
+    },
+    '@media screen and (min-width:2000px)': {
+      width:'75%'
+    },
+    '@media screen and (min-width:2100px)': {
+      width:'100%'
+    },
+    '@media screen and (max-width:600px)': {
+      width:'100%'
+    }
+    
+  }
 };
 export default CarouselWrapper

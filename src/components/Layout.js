@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
+import { Container } from 'theme-ui';
 
 const Layout = ({children}) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -13,13 +14,21 @@ const Layout = ({children}) => {
    
 
   return (
-    <div>
-      <Header className={isSticky ? 'sticky' : ''} />
-      <main>
-        {children}
-      </main>
-      <Footer/>
-    </div>
+    <Container sx={{
+      background: 'red',
+      '@media screen and (min-width:2200px)': {
+        display: 'grid',
+        placeContent: 'center',
+      }
+    }}>
+    <div style={{maxWidth:'2200px',background:'white',position:'relative'}}>
+    <Header className={isSticky ? 'sticky' : ''} />
+    <main>
+    {children}
+    </main>
+    <Footer/>
+      </div>
+      </Container>
   )
 }
 

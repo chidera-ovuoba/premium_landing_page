@@ -31,7 +31,7 @@ const Footer = () => {
           {
             footerData.map(({title,img}) => (
               <div style={{ textAlign: 'center' }} key={title.trim()}>
-                <Image src={img} width={50} height={50} />
+                <Image src={img} width={50} height={50} alt={title} />
                 <Container sx={{marginTop:'2rem'}}>
                   <Text sx={styles.heading3}>{title}</Text>
                   <Paragraph sx={styles.pTag}>
@@ -43,7 +43,7 @@ const Footer = () => {
           }
         </Grid>
         <Grid sx={styles.footerBottom}>
-          <Link href="/" sx={{ width: '100%' }}><Image src={logo} sx={{ maxWidth: '100%', height: 'auto' }} /></Link>
+          <Link href="/" sx={{ width: '100%' }}><Image src={logo} sx={{ maxWidth: '100%', height: 'auto' }} alt='Landguru' /></Link>
           <div style={{ margin: '0'}}>
             <nav style={styles.footerNav}>
               {['Home', 'Advertise', 'Supports', 'Marketing', 'Contact'].map((item) => (

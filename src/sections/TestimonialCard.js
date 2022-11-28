@@ -9,6 +9,7 @@ import Avatar3 from '../assets/Ellipse (2).png';
 import Avatar4 from '../assets/Ellipse (3).png';
 
 import CarouselWrapper from "../components/CarouselWrapper";
+import { useEffect, useRef } from "react";
 
 
 
@@ -48,19 +49,21 @@ const data = [
     avatar: Avatar4,
     name: "Denny Hilguston",
     designation: "@denny.hil",
-  },
+  }
 ];
 
-
+// document.querySelector().addEventListener('',())
 
 const TestimonialCard = () => {
+
+  
   return (
-    <div>
+    <>
     <Container sx={styles.testimonial_wrapper}>
         <SectionHeader slogan='TESTIMONIAL' title='Meet Client Satisfaction' />
-        <Flex>
+        <CarouselWrapper>
         {data.map(({avatar,description,designation,id,name,title}) => (
-           <Container sx={styles.testimonial_card_container} key={id}>
+           <div sx={styles.testimonial_card_container} key={id} className='testimonial'>
               <Flex sx={styles.testimonial_card}>
                 <Image src={rating} />
                 <Heading as='h2'>{title}</Heading>
@@ -68,7 +71,7 @@ const TestimonialCard = () => {
                 {description}
                 </Text>
                 <Flex sx={styles.testimonial_card_profile}>
-                  <Image src={avatar} />
+                <Image src={avatar} alt={name} />
                   <Box sx={{
                     flexDirection: 'column',
                     display: 'flex',
@@ -81,17 +84,21 @@ const TestimonialCard = () => {
                   </Box>
                 </Flex>
                 </Flex>
-            </Container>))}
-      </Flex>    
+            </div>))}
+      </CarouselWrapper>    
       </Container>
-    </div>
+    </>
   )
 }
 const styles = {
   testimonial_wrapper: {
+    whiteSpace: 'nowrap',
     width: '80%',
     // margin: '0 auto',
-    p:"5rem 0"
+    // overflowX: 'scroll',
+    p: "5rem 0",
+    // display: 'grid',
+    // placeItmes:'center',
   },
   // teamSection_team_cards_grid: {
   //   gridTemplateColumns: 'repeat(3,1fr)',
@@ -103,20 +110,25 @@ const styles = {
   //   }
   // },
   testimonial_card_container: {
-        border: "2px solid rgba(38, 78, 118, 0.1)",
-        borderRadius: '10px',
-        p: '3rem 2rem',
-        m:'0',
-        maxWidth: '450px',
-        minWidth: '290px',
+         minWidth: '400px',
+         border: "2px solid rgba(38, 78, 118, 0.1)",
+         borderRadius: '10px',
+         p: '3rem 2rem',
+         mx:'10px',
+         width: '400px',
+         '@media screen and (max-width:520px)': {
+           minWidth: '320px',
+           
+        },
         height: '100%',
-        position: 'relative',
+      //  height: '400px',
         ':hover': {
           boxShadow: 'rgb(38 78 118 / 10%) 0px 4px 25px'
         }
       },
       testimonial_card: {
         flexDirection: 'column',
+        // width:'400',
         gap: '1rem',
         height: '100%',
     justifyContent:'space-around',
@@ -129,12 +141,14 @@ const styles = {
     fontWeight: '700',
     color: 'text',
     lineHeight: 1.6,
-    fontSize: '22px'
+    fontSize: '22px',
+    whiteSpace: 'normal'
     },
     'p': {
     color: 'text',
     lineHeight: 2,
     fontSize: '20px',
+    whiteSpace: 'normal'
     }
   },
   testimonial_card_profile:{

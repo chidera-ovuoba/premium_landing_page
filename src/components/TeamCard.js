@@ -1,18 +1,17 @@
 /** @jsxImportSource theme-ui */
 import Image from 'next/future/image'
 import { Box, Container, Grid, Heading, IconButton, Text } from 'theme-ui';
-import Avatar from '../assets/team1.png';
 import { FaFacebookF } from 'react-icons/fa';
 import { BsInstagram,BsTwitter } from 'react-icons/bs';
 
 
-const TeamCard = () => {
+const TeamCard = ({name,title,img,id}) => {
   return (
       <Container sx={styles.team_card_wrapper}>
-          <Image src={Avatar} />
+          <Image src={img} alt={name} />
           <Box sx={{ marginTop: '1.5rem' }}>
-              <Heading as='h2'>Saimon Harmer</Heading>
-              <Text as='p'>CEO and Founder</Text>
+              <Heading as='h2'>{name}</Heading>
+              <Text as='p'>{title}</Text>
           </Box>
           <Grid sx={styles.social_icons_grid}>
               <IconButton children={<FaFacebookF/>} />
@@ -63,9 +62,15 @@ const styles = {
     transition: 'color 0.5s',
     fontSize: '16px',
 },
+//  '& div:last-of-type': {
+    
+//   transition:'all 0.4s ease',
+// },
 ':hover div:last-of-type':{
     transition:'all 0.4s ease',
     transform: "scaleY(1)",
+    opacity:1
+    
     },
     ':hover':{
         boxShadow: '0 4px 10px rgb(39 83 123 / 12%)',
@@ -87,9 +92,11 @@ const styles = {
         right: '25px',
         transition:'all 0.4s ease',
         transform: "scaleY(0)",
+        opacity:0,
         transformOrigin: '0% bottom',
         '@media screen and (max-width:950px)': {
             position: 'static',
+            opacity:1,
             gridTemplateColumns: 'repeat(3,1fr)',
             transform: 'unset',
             marginTop:'1.5rem'
