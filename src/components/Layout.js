@@ -15,7 +15,7 @@ const Layout = ({children}) => {
 
   return (
     <Container sx={{
-      background: 'red',
+      background: 'radial-gradient(#0898E7,#FAAE1B,#EA3A60)',
       '@media screen and (min-width:2200px)': {
         display: 'grid',
         placeContent: 'center',

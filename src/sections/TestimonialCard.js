@@ -65,7 +65,7 @@ const TestimonialCard = () => {
         {data.map(({avatar,description,designation,id,name,title}) => (
            <div sx={styles.testimonial_card_container} key={id} className='testimonial'>
               <Flex sx={styles.testimonial_card}>
-                <Image src={rating} />
+                <Image src={rating} alt='rating'/>
                 <Heading as='h2'>{title}</Heading>
                 <Text as='p'>
                 {description}

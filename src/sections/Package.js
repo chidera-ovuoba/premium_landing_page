@@ -113,8 +113,8 @@ const Package = () => {
 
   }
   return (
-    <div>
-      <Container sx={styles.pricing_section_container}>
+    <div id='pricing'>
+      <Container sx={styles.pricing_section_container} >
         <Box sx={styles.pricing_section_wrapper}>
           <SectionHeader slogan='PRICING PLAN' title='Choose your pricing policy' />
           <Box sx={styles.pricing_section_filters_container}>

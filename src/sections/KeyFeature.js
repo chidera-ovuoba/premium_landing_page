@@ -37,7 +37,7 @@ const keyFeatureData = [
 
 const KeyFeature = () => {
   return (
-    <div sx={{ variant: 'section.keyFeature' }} id='feature'>
+    <div sx={{ variant: 'section.keyFeature' }} id='features'>
       <Container sx={styles.section_key_features_container}>
         <SectionHeader
           slogan='WHATS THE FUNCTION'
