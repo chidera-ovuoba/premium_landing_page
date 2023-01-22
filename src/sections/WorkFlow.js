@@ -2,7 +2,7 @@ import Image from 'next/future/image';
 import React from 'react'
 import { Container, Flex, Grid, Heading, Text } from 'theme-ui';
 import VectorTopLeft from '../assets/VectorTopLeft.png';
-import VectorTopRight from '../assets/VectorTopRight.png';
+import VectorTopRight from '../assets/VectorTopRIght.png';
 import VectorBottomLeft from '../assets/VectorBottomLeft.png';
 import VectorBottomRight from '../assets/VectorBottomRight.png';
 import SectionHeader from '../components/SectionHeader';
