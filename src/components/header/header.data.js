@@ -1,4 +1,4 @@
-export default [
+ const linkData =[
     {
         path: 'home',
         label:'Home'
@@ -16,3 +16,5 @@ export default [
         label:'Testimonial'
     }
 ]
+
+export default linkData;

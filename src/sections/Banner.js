@@ -20,7 +20,7 @@ const Banner = () => {
           <Button variant="primary">Explore</Button>
         </Box>
         <Box sx={styles.banner_imageBox}>
-          <Image src={BannerImg} alt="Banner" priority/>
+          <Image src={BannerImg} alt="Banner" priority={true} as='Image' />
         </Box>
       </Grid>
     </Container>

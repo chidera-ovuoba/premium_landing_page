@@ -39,10 +39,10 @@ const blogData = [
 ]
 const Blog = () => {
   return (
-    <div>
+    <>
     <Container sx={styles.blog_wrapper}>
               <SectionHeader slogan='OUR BLOG' title='Explore our products for your business solution' />
-              <CarouselWrapper>
+              <CarouselWrapper style={{height:'450px',alignItems:'center'}}>
                   {blogData.map(({ date, img, name, title, id }) => <Container sx={styles.blog_card_container} key={id} className='blog'>
                        <Box sx={{width:'400px'}}>
                           <Image src={img} alt={name} />
@@ -63,7 +63,7 @@ const Blog = () => {
                   </Container>)}
                   </CarouselWrapper>
       </Container>  
-      </div>
+      </>
   )
 }
 
@@ -71,7 +71,7 @@ const styles = {
     blog_wrapper: {
     width: '80%',
     margin: '0 auto',
-    p:"5rem 0"
+    p:"5rem 0",
     },
     blog_card_container: {
         border: "2px solid rgba(38, 78, 118, 0.1)",

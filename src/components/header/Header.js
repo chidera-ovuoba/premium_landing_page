@@ -15,6 +15,7 @@ const Header = ({className}) => {
         <Flex sx={styles.nav}>
           {menuItems.map(({ label, path },i) => (
           <Link 
+           href={path}
             activeClass="active__class"
             to={path}
             spy={true}

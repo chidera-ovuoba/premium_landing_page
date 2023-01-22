@@ -54,9 +54,7 @@ const WorkFlow = () => {
       <Heading as='h2' variant="featureCardHeading"  sx={{
         color: 'white',
         mb: 2,
-       }}
-      children={title}
-      />
+       }}>{title}</Heading>
       <Text
         variant="featureCardText"
       sx={{

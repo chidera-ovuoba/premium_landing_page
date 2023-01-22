@@ -16,15 +16,15 @@ const SectionHeader = ({ slogan, title, isWhite, isAlign, marginBottom, sxStyles
                   color: isWhite ? 'white' : 'primary',
                   opacity:isWhite ? 0.7 : 1
               }}
-             children={slogan}
-          />
+             
+          >{slogan}</Text>
           <Heading
               sx={ sxStyles ? sxStyles :{
                   variant: 'sectionHeader.title',
                   color: isWhite ? 'white' : 'heading',
               }}
-             children={title}
-          />
+             
+          >{title}</Heading>
       </Box>
   )
 }

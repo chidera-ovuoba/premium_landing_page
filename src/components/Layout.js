@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import { Container } from 'theme-ui';
+import Head from 'next/head';
 
 const Layout = ({children}) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -14,6 +15,13 @@ const Layout = ({children}) => {
    
 
   return (
+    <>
+    <Head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landguru</title>
+    </Head>
     <Container sx={{
       background: 'radial-gradient(#0898E7,#FAAE1B,#EA3A60)',
       '@media screen and (min-width:2200px)': {
@@ -29,6 +37,7 @@ const Layout = ({children}) => {
     <Footer/>
       </div>
       </Container>
+      </>
   )
 }
 

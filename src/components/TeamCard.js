@@ -14,9 +14,9 @@ const TeamCard = ({name,title,img,id}) => {
               <Text as='p'>{title}</Text>
           </Box>
           <Grid sx={styles.social_icons_grid}>
-              <IconButton children={<FaFacebookF/>} />
-              <IconButton children={<BsTwitter/>} />
-              <IconButton children={<BsInstagram/>} />
+              <IconButton><FaFacebookF/></IconButton>
+              <IconButton><BsTwitter/></IconButton>
+              <IconButton><BsInstagram/></IconButton>
           </Grid>
       </Container>
   )

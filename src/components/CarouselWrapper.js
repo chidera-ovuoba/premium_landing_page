@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Box, Container, Flex } from "theme-ui";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 // import Carousel from "react-multi-carousel";
 
 const ButtonGroup = ({removeButton }) => {
@@ -28,7 +28,7 @@ const ButtonGroup = ({removeButton }) => {
     </Flex>
 }
 
-const CarouselWrapper = ({ children,removeButton }) => {
+const CarouselWrapper = ({ children,removeButton,style }) => {
 
   const containerRef = useRef(null);
    const buttonGroupRef = useRef(null);
@@ -39,63 +39,70 @@ const CarouselWrapper = ({ children,removeButton }) => {
   
   useEffect(() => {
     const container = containerRef.current;
-    buttonGroupRef.current.children[1].children[0].children[0].children[1].addEventListener('mousedown', () => {
+    const clickLeft = () => {
       container.scrollLeft += 0.15 * Number(container.firstChild.clientWidth)
       !startScroll && setStartScroll(true)
       setScrollLeft(false);
+    }
+    const clickRight = () => {
+      container.scrollLeft -= 40
+      !startScroll && setStartScroll(true)
+      setScrollLeft(true)
+      }
+    buttonGroupRef.current.children[1].children[0].children[0].children[1].addEventListener('mousedown', () => {
+     clickLeft()
     })
       buttonGroupRef.current.children[1].children[0].children[0].children[0].addEventListener('mousedown', () => {
-        container.scrollLeft -= 40
-        !startScroll && setStartScroll(true)
-        setScrollLeft(true)
+       clickRight()
       })
-  }, [])
+  }, [startScroll])
   
-
-  // let thresholdQuery= window.innerWidth < 420 ? [0.6,1]:[1]
-    useEffect(() => {
-    const container = containerRef.current;
-      container.scrollLeft -= container.scrollLeft - 11;
-      window.addEventListener('resize',()=>setWindowWidth(window.innerWidth))
-    }, [])
-  useEffect(() => {
-  const container = containerRef.current
-  const galleryItems = containerRef.current.querySelectorAll('.testimonial')
-  const blogItems = containerRef.current.querySelectorAll('.blog')
-  var observer = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting !== true) {
-      console.log('Element has just become invisible in screen',entries[0].target);
-      if (entries[0].target === container.firstChild) {
-        // console.log('Element has just become invisible in screen');
-        container.removeChild(entries[0].target);
-        container.appendChild(entries[0].target);
+  
+  useEffect(() => { 
+      const container = containerRef.current;
         container.scrollLeft -= container.scrollLeft - 11;
-        }
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+    return () => {
+      window.removeEventListener('resize', () => setWindowWidth(window.innerWidth));
+      
     }
-    }, { threshold: [0],root:container });
+    }, [windowWidth])
   
-  var observerLeft = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting === true && scrollLeft) {
-        // console.log('Element has just become visible in screen');
-        if (container.scrollLeft <= 0 || 10 && entries[0].target === container.firstChild && scrollLeft) {
-          // console.log('Element has just ');
-         entries[0].target.insertAdjacentElement("beforebegin", entries[0].target.nextSibling.nextSibling.nextSibling);
-        container.scrollLeft += entries[0].target.clientWidth + 10;
-        } 
-      }
-  }, { threshold: windowWidth < 420 ? [0.6,1]:[1],root:container});
-  
-  startScroll && galleryItems.forEach(item=>observer.observe(item))
-  startScroll && galleryItems.forEach(item=>observerLeft.observe(item))
-  startScroll && blogItems.forEach(item=>observer.observe(item))
-  startScroll && blogItems.forEach(item=>observerLeft.observe(item))
-  
-
+  useEffect(() => {
     
-  },[startScroll,scrollLeft])
+    const container = containerRef.current
+    const galleryItems = containerRef.current.querySelectorAll('.testimonial')
+    const blogItems = containerRef.current.querySelectorAll('.blog')
+    var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting !== true) {
+        if (entries[0].target === container.firstChild) {
+          container.removeChild(entries[0].target);
+          container.appendChild(entries[0].target);
+          container.scrollLeft -= container.scrollLeft - 11;
+          }
+      }
+      }, { threshold: [0],root:container });
+    
+    var observerLeft = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting === true && scrollLeft) {
+          if (container.scrollLeft <= 0 || 10 && entries[0].target === container.firstChild && scrollLeft) {
+           entries[0].target.insertAdjacentElement("beforebegin", entries[0].target.nextSibling.nextSibling.nextSibling);
+          container.scrollLeft += entries[0].target.clientWidth + 10;
+          } 
+        }
+    }, { threshold: windowWidth < 420 ? [0.6,1]:[1],root:container});
+    
+    startScroll && galleryItems.forEach(item=>observer.observe(item))
+    startScroll && galleryItems.forEach(item=>observerLeft.observe(item))
+    startScroll && blogItems.forEach(item=>observer.observe(item))
+    startScroll && blogItems.forEach(item=>observerLeft.observe(item))
+    
+  },[startScroll,windowWidth,scrollLeft])
+
+
   return (
     <Box ref={buttonGroupRef} >
-    <Box sx={styles.carouselWrapper} ref={containerRef} className='testimonial-container-card'>
+    <Box sx={styles.carouselWrapper} ref={containerRef} className='testimonial-container-card' style={style}>
     {children}
     </Box>
       <ButtonGroup removeButton={removeButton} />

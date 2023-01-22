@@ -22,16 +22,14 @@ const FeatureCardColumn = ({src,title,text,isWhite,isColumn,width,height}) => {
         mb: 2,
       
       }}
-      children={title}
-      />
+      >{title}</Heading>
       <Text
         variant="featureCardText"
       sx={{
        color: isWhite ? 'white' : 'heading',
        opacity:isWhite ? 0.7 : 1,
         }}
-        children={text}
-        />
+        >{text}</Text>
         </Flex>
     </Flex>
   )
