@@ -44,14 +44,13 @@ const Blog = () => {
               <SectionHeader slogan='OUR BLOG' title='Explore our products for your business solution' />
               <CarouselWrapper style={{height:'450px',alignItems:'center'}}>
                   {blogData.map(({ date, img, name, title, id }) => <Container sx={styles.blog_card_container} key={id} className='blog'>
-                       <Box sx={{width:'400px'}}>
+                       <Box>
                           <Image src={img} alt={name} />
                           </Box>
                       <Box sx={styles.blog_card_container_content}>
                           <Heading as='h2'>{title}</Heading>
                           <Flex sx={{
                               justifyContent: 'space-between',
-                              width: '100%',
                               alignItems: 'center',
                               flexWrap: 'wrap',
                               gap:'10px'
@@ -76,7 +75,6 @@ const styles = {
     blog_card_container: {
         border: "2px solid rgba(38, 78, 118, 0.1)",
         borderRadius: '10px',
-        maxWidth: '404px',
         width: '400px',
         minWidth: '400px',
         height:'392px',
@@ -99,12 +97,10 @@ const styles = {
         }
     },
     blog_card_container_content: {
-        width:'inherit',
         p: '1rem 2rem',
         'h2': {
         letterSpacing: '-0.55px',
         fontSize: '20px',
-        width: '90%',
         whiteSpace:'normal',
         color: 'heading',
         fontWeight: 700,

@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RiCheckboxCircleFill } from 'react-icons/ri';
 import { MdCancel } from 'react-icons/md';
 import { Box, Button, Container } from 'theme-ui';
@@ -11,6 +11,17 @@ const Package = () => {
   const ButtonLeftRef = useRef(null)
   const ButtonRightRef = useRef(null)
   const [period, setPeriod] = useState('Monthly Plan');
+    const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => { 
+    setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+    return () => {
+      window.removeEventListener('resize', () => setWindowWidth(window.innerWidth));
+      
+    }
+  }, [])
+  
   const PriceCardData = {
     priceData: [
       {
@@ -123,7 +134,11 @@ const Package = () => {
           <Button type='button' sx={styles.pricing_section_filters_btn} onClick={handleButtonClick} ref={ButtonRightRef}>Annual Plan</Button>    
             </div>
           </Box>
-          <CarouselWrapper removeButton={true}>
+          <CarouselWrapper removeButton={true} style={ windowWidth > 1350 ?{
+           alignItems:'center',
+           justifyContent:'center',
+           width:'100%'
+             }:{}}>
           {
             PriceCardData.priceData.map((data) => <PriceCard {...data} period={period} key={data.id}/>)
           }

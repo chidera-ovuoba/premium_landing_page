@@ -7,8 +7,8 @@ import Image from 'next/future/image';
 const Banner = () => {
   return (
     <Container id='home' sx={styles.section_home_container}>
-      <Image src={BlueBg} alt='BlueBg'  />
-      <Image src={OrangeBg} alt='OrangeBg' />
+      <Image src={BlueBg} alt='BlueBg' priority={true}  />
+      <Image src={OrangeBg} alt='OrangeBg' priority={true}  />
       <Grid sx={styles.section_home}>
          <Box sx={styles.banner_contentBox}>
           <Heading as="h1" variant="heroPrimary">
