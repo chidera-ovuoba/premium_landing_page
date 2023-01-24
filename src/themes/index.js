@@ -68,7 +68,7 @@ const themes = {
     primary: {
       variant: 'buttons.defaultBtn',
       color: 'white',
-      bg: 'primary',
+      bg: '#ea3a60',
       fontSize:'18px',
       '&:hover': {
         boxShadow: 'rgba(233, 76, 84, 0.57) 0px 9px 20px -5px',
@@ -76,14 +76,14 @@ const themes = {
     },
     whiteButton: {
       variant: 'buttons.defaultBtn',
-      color: 'heading_secondary',
+      color: '#0F2137',
       bg: 'white',
       '&:hover': {
         boxShadow: 'rgba(0, 0, 0, 0.5) 0px 12px 24px -10px',
       }
     },
     secondary: {
-      color: 'primary',
+      color: '#ea3a60',
       bg: 'transparent',
       fontSize: '14px',
       letterSpacing: '-0.15px',
@@ -94,8 +94,8 @@ const themes = {
       border: '2px solid #EA3A60',
       borderRadius: '3rem',
       '&:hover': {
-        color: 'background',
-        bg: 'primary'
+        color: '#fff',
+        bg: '#ea3a60'
       },
       '@media screen and (min-width:520px)': {
         p: '0.7rem 2.2rem'
@@ -109,7 +109,7 @@ const themes = {
       variant: 'buttons.defaultBtn',
       backgroundColor: 'transparent',
       cursor: 'pointer',
-      color: 'secondary',
+      color: '#2563FF',
       fontSize: '1.3rem',
       fontWeight: '700',
       textAlign: 'center',
@@ -123,10 +123,10 @@ const themes = {
       fontWeight: 'heading',
       fontSize: [4],
       letterSpacing: '-.55px',
-      color: 'heading',
+      color: '#0F2137',
     },
     heroPrimary: {
-      color: 'heading',
+      color: '#0F2137',
       fontSize: [
         '32px',
         '36px',
@@ -146,12 +146,12 @@ const themes = {
       lineHeight: [1.9, null, null, 2],
       fontWeight: 'body',
       mb: '1rem',
-      color: 'heading',
+      color: '#0F2137',
     },
     featureCardHeading: {
     letterSpacing: '-.55px',
     fontSize: '18px',
-    color: 'secondary',
+    color: '#2563FF',
     lineHeight: 1.4,
     fontWeight: 700,
     },
@@ -198,7 +198,7 @@ const themes = {
     mx: 'auto',
     title: {
       fontSize: ['24px', null, '28px', null, null, '32px', null, '36px'],
-      color: 'heading',
+      color: '#0F2137',
       lineHeight: [1.3, null, null, 1.25],
       fontWeight: '700',
       letterSpacing: '-.5px',
@@ -206,7 +206,7 @@ const themes = {
 
     subTitle: {
       fontSize: [0, '13px', null, '14px'],
-      color: 'primary',
+      color: '#ea3a60',
       letterSpacing: ['1.5px', null, '2px'],
       textTransform: 'uppercase',
       fontWeight: '700',
