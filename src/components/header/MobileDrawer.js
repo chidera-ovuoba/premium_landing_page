@@ -44,7 +44,7 @@ const MobileDrawer = () => {
             width={`${ windowWidth <= 500 ? '75%' : '50%'}`}
             drawerHandler={
                 <Box sx={styles.handler}>
-                <IoMdMenu size='26px'/>
+                <IoMdMenu size='26px' color="#000"/>
                 </Box>
             }
             windowWidth={windowWidth}
@@ -102,7 +102,7 @@ const styles = {
     drawer: {
     width: "100%",
     height: "100%",
-    backgroundColor: "dark",
+    backgroundColor: "#000",
     },
 
   close: {
@@ -133,17 +133,17 @@ const styles = {
     a: {
       fontSize: "16px",
       fontWeight: "500",
-      color: "text_white",
+      color: "#343D48",
       py: "15px",
       cursor: "pointer",
       borderBottom: "1px solid #e8e5e5",
         transition: "all 0.25s",
       "&:hover": {
-          color: "secondary",
+          color: "#2563FF",
           borderColor: 'red'
       },
       "&.active_mobile_drawer": {
-          color: "secondary",
+          color: "#2563FF",
         },
     },
   },
@@ -166,7 +166,7 @@ const styles = {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: "text",
+      color: "#343D48",
       fontSize: '20px',
       mr: "15px",
       transition: "all 0.25s",
@@ -175,7 +175,7 @@ const styles = {
         mr: "0",
       },
       "&:hover": {
-        color: "secondary",
+        color: "#2563FF",
       },
     },
   },

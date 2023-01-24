@@ -90,7 +90,7 @@ const styles = {
           lineHeight: 'nav',
           transition: 'all 0.5s',
           '&:hover': {
-            color:'primary'
+            color:'#ea3a60'
       },
      '@media screen and (max-width:950px)': {
        display:"none"
