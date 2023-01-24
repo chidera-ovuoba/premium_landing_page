@@ -116,6 +116,9 @@ const styles = {
         },
         'span:first-of-type': {
             color:'#ea3a60'
+        },
+        'span:last-of-type': {
+            color:'#343D48'
         }
     }
 }

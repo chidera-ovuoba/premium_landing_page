@@ -117,7 +117,8 @@ const PriceCard = ({ listdata, period,id,title,subtitle,pricing,buttonText,isAva
         },
         'p': {
             fontSize: '1.2rem',
-            lineHeight:1.3
+            lineHeight: 1.3,
+            color:'#343D48'
         }
     },
     price_card_container_tag: {
