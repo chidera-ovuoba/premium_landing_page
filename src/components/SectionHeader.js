@@ -13,7 +13,7 @@ const SectionHeader = ({ slogan, title, isWhite, isAlign, marginBottom, sxStyles
           <Text
               sx={{
                   variant: 'sectionHeader.subTitle',
-                  color: isWhite ? 'white' : 'primary',
+                  color: isWhite ? 'white' : '#ea3a60',
                   opacity:isWhite ? 0.7 : 1
               }}
              
@@ -21,7 +21,7 @@ const SectionHeader = ({ slogan, title, isWhite, isAlign, marginBottom, sxStyles
           <Heading
               sx={ sxStyles ? sxStyles :{
                   variant: 'sectionHeader.title',
-                  color: isWhite ? 'white' : 'heading',
+                  color: isWhite ? 'white' : '#0F2137',
               }}
              
           >{title}</Heading>

@@ -5,7 +5,7 @@ import { FaFacebookF } from 'react-icons/fa';
 import { BsInstagram,BsTwitter } from 'react-icons/bs';
 
 
-const TeamCard = ({name,title,img,id}) => {
+const TeamCard = ({name,title,img}) => {
   return (
       <Container sx={styles.team_card_wrapper}>
           <Image src={img} alt={name} />
@@ -24,7 +24,7 @@ const TeamCard = ({name,title,img,id}) => {
 
 const styles = {
     team_card_wrapper: {
-    color: 'text',
+    color: '#343D48',
     lineHeight: '1.8',
     transition: 'all ease 0.4s',
     borderRadius: '8px',
@@ -48,7 +48,7 @@ const styles = {
     'h2': {
     textAlign: 'center',
     letterSpacing: '-.55px',
-    color: 'heading',
+    color: '#0F2137',
     fontWeight: 700,
     transition: 'color 0.5s',
     marginBottom: '5px',
@@ -58,7 +58,7 @@ const styles = {
     'p':{
     textAlign: 'center',
     lineHeight: 1.5,
-    color: 'text',
+    color: '#343D48',
     transition: 'color 0.5s',
     fontSize: '16px',
 },
@@ -80,10 +80,10 @@ const styles = {
         }
     },
     '&:hover h2,button':{
-        color:'primary'
+        color:'#ea3a60'
     },
     '&:hover p':{
-        color:'primary'
+        color:'#ea3a60'
     }
     },
     social_icons_grid: {
@@ -107,7 +107,7 @@ const styles = {
             height: 'unset',
             '&:hover': {
                 cursor: 'pointer',
-                color:'heading'
+                color:'#0F2137'
             },
         
         'svg':{

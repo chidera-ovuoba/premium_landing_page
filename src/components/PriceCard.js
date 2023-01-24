@@ -1,7 +1,4 @@
 /** @jsxImportSource theme-ui */
-import { RiCheckboxCircleFill } from 'react-icons/ri';
-import { MdCancel } from 'react-icons/md';
-import { keyframes } from '@emotion/react';
 import { Box, Button, Container, Flex, Grid, Heading, Text } from 'theme-ui';
 import { useEffect, useRef } from 'react';
 
@@ -103,7 +100,7 @@ const PriceCard = ({ listdata, period,id,title,subtitle,pricing,buttonText,isAva
     marginBottom: '10px'
     },
     price_card_container_paragraph: {
-    color: 'text',
+    color: '#343D48',
     lineHeight: '1.5',
     fontSize: '16px',
     },
@@ -116,7 +113,7 @@ const PriceCard = ({ listdata, period,id,title,subtitle,pricing,buttonText,isAva
         'svg': {
             width: '1.6rem',
             height: '1.6rem',
-            color:'primary'
+            color:'#ea3a60'
         },
         'p': {
             fontSize: '1.2rem',

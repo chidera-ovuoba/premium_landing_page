@@ -102,7 +102,7 @@ const styles = {
         letterSpacing: '-0.55px',
         fontSize: '20px',
         whiteSpace:'normal',
-        color: 'heading',
+        color: '#0F2137',
         fontWeight: 700,
         lineHeight: 1.5,
         marginBottom: '25px',
@@ -111,11 +111,11 @@ const styles = {
           },
         ':hover':{
             cursor: 'pointer',
-            color:'primary'
+            color:'#ea3a60'
         }  
         },
         'span:first-of-type': {
-            color:'primary'
+            color:'#ea3a60'
         }
     }
 }

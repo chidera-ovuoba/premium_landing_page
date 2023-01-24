@@ -30,12 +30,12 @@ const styles = {
     newsLetter_section_grid: {
         p: '6rem 0',
         textAlign: 'center',
-        backgroundColor: 'primary',
+        backgroundColor: '#ea3a60',
         borderRadius: '10px',
 
     },  
     newsLetter_section_grid_h2: {
-    color: 'background',
+    color: '#fff',
     placeSelf:'center',
     fontWeight: 700,
     marginBottom: '15px',
@@ -56,7 +56,7 @@ const styles = {
     },
     newsLetter_section_grid_p: {
     placeSelf:'center',
-    color: 'background',
+    color: '#fff',
     p: '0rem 1.5rem',
     lineHeight: 2,
     fontSize: '18px',
@@ -94,7 +94,7 @@ const styles = {
     fontWeight: 500,
     color: 'heading',
     p:'2.2rem 2rem',
-    backgroundColor: 'background',
+    backgroundColor: '#fff',
     textAlign: 'left',
     fontSize: '16px',
     height: '60px',
@@ -103,7 +103,7 @@ const styles = {
     '&::placeholder':{
       fontSize: '16px',
       fontWeight: 600,
-      color: 'primary',  
+      color: '#ea3a60',  
     },
     '@media screen and (max-width:600px)': {
         pl:'1.2rem'
@@ -126,7 +126,7 @@ const styles = {
     fontSize: '16px',
     flexShrink: 0,
     marginLeft: '10px',
-    backgroundColor: 'primary',
+    backgroundColor: '#ea3a60',
     marginTop: 0,
      '&:hover':{
         boxShadow: 'rgb(233 76 84 / 57%) 0px 9px 20px -5px'
@@ -134,7 +134,7 @@ const styles = {
     '@media screen and (max-width:500px)': {
         position: 'static',
         width: '100%',
-        backgroundColor: 'heading',
+        backgroundColor: '#0F2137',
     }
      
      

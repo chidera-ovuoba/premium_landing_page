@@ -124,7 +124,7 @@ const styles = {
     justifyContent: "center",
     height:'fit-content',
     button: {
-      bg: "primary",
+      bg: "#ea3a60",
       border: "0px solid red",
       fontSize: 40,
       cursor: "pointer",

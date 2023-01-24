@@ -139,13 +139,13 @@ const styles = {
     'h2': {
     letterSpacing: '-0.55px',
     fontWeight: '700',
-    color: 'text',
+    color: '#343D48',
     lineHeight: 1.6,
     fontSize: '22px',
     whiteSpace: 'normal'
     },
     'p': {
-    color: 'text',
+    color: '#343D48',
     lineHeight: 2,
     fontSize: '20px',
     whiteSpace: 'normal'
@@ -156,7 +156,7 @@ const styles = {
     'h6': {
     letterSpacing: '-0.55px',
     fontWeight: 700,
-    color: 'text',
+    color: '#343D48',
     lineHeight: 1.3,
     fontSize: '22px',
     },
@@ -165,7 +165,7 @@ const styles = {
       height:'65px'
     },
     'span': {
-    color: 'primary',
+    color: '#ea3a60',
     fontWeight: 500,
     fontSize: '18px',
     lineHeight: 1.4

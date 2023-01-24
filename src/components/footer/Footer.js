@@ -72,7 +72,7 @@ const styles = {
     }
   },
   heading3: {
-    color: 'heading_secondary',
+    color: '#02073E',
     lineHeight: 1.4,
     fontWeight: 700,
     marginBottom: '1rem',
@@ -82,6 +82,7 @@ const styles = {
   },
   pTag: {
     lineHeight: 2,
+    color: '#02073E',
     fontWeight: 400,
     fontSize: '1rem',
     fontFamily: 'font',
@@ -100,14 +101,14 @@ const styles = {
   },
    footerNavLink: {
       transition: 'all 0.35s ease',
-      color: 'text',
+      color: '#343D48',
       fontWeight: 400,
       cursor: 'pointer',
       fontSize: '15px',
       lineHeight: 1.8,
       p: ' 0.5rem 1.3rem',
       '&:hover': {
-        color:'primary'
+        color:'#ea3a60'
       }
     }
 }

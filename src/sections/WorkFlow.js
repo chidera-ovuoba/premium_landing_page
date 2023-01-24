@@ -75,7 +75,7 @@ const styles = {
   workFlow_wrapper: {
     p: '6rem 0 10rem',
     position:'relative',
-    backgroundColor: 'primary',
+    backgroundColor: '#ea3a60',
     '&::after': {
       content: '""',
       position: 'absolute',
